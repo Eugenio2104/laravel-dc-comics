@@ -32,5 +32,8 @@
             </tbody>
         </table>
         {{ $comics->links() }}
+        <div>
+            <a class="btn btn-success" href="{{ route('comics.create') }}">Crea una nuova pasta</a>
+        </div>
     </div>
 @endsection
