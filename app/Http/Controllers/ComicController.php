@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -35,13 +36,18 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
+
+        echo 'hello';
+        die();
         $form_data = $request->all();
         $new_comic = new Comic();
         $form_data['slug'] = Comic::generateSlug($form_data['title']);
         $new_comic->fill($form_data);
         $new_comic->save();
+
+
 
         // $new_comic->title = $form_data['title'];
         // $new_comic->slug = Comic::generateSlug($new_comic->title);
@@ -85,7 +91,7 @@ class ComicController extends Controller
      * @param  \App\Models\Comic  $comic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(ComicRequest $request, Comic $comic)
     {
         $form_data = $request->all();
         if ($form_data['title'] != $comic->title) {
@@ -108,6 +114,6 @@ class ComicController extends Controller
     {
         $comic->delete();
 
-        return redirect()->route('comics.index')->with('deleted', "il comic $comic->title e stato eliminato correttamente");
+        return redirect()->route('comics.index')->with('deleted', "il comic <strong> $comic->title </strong> e stato eliminato correttamente");
     }
 }

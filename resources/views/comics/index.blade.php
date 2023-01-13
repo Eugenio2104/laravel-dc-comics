@@ -6,7 +6,7 @@
 
         @if (session('deleted'))
             <div class="alert alert-info" role="alert">
-                {{ session('deleted') }}
+                {!! session('deleted') !!}
             </div>
         @endif
         <table class="table table-striped">
