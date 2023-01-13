@@ -1,1 +1,7 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+
+nav ul.pagination .page-link.active,
+.active>.page-link {
+    background-color: orange;
+}
